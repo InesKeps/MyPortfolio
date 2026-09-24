@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* === Couleurs — Aubergine électrique === */
+  --color-aubergine: #1A1023;
+  --color-surface:   #241530;
+  --color-accent:    #C98BA6; /* rose poudré — accent primaire */
+  --color-lavender:  #B794F6;
+  --color-ink:       #F5EFF7;
+  --color-muted:     #A499AF;
+  --color-mint:      #6FE7C4;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Polices : ces variables sont définies par next/font dans layout.tsx */
+  --font-display: var(--font-bricolage);
+  --font-body:    var(--font-inter);
+  --font-mono:    var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background-color: var(--color-aubergine);
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-inter);
+}
+
+body > section,
+body > main {
+  width: 100%;
+  min-width: 0;
+}
+
+.cursor-none,
+.cursor-none * {
+  cursor: none;
+}
+
+@keyframes cursor-ripple {
+  from {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.15);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.cursor-ripple {
+  animation-name: cursor-ripple;
+  animation-duration: 0.7s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.cursor-ripple-delay {
+  animation-delay: 0.12s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
