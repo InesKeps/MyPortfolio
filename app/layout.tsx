@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ines-keps.vercel.app"), // on ajustera l'URL après le déploiement
+  metadataBase: new URL("https://my-portfolio-ines-keps.vercel.app"),
   title: "Ines Keps — Développeuse web fullstack",
   description:
     "Portfolio d'Ines Keps, développeuse web fullstack. Je conçois et je construis des applications web de bout en bout.",
